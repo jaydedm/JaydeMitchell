@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  overflow: hidden;
 }
 
 .App-logo {
@@ -13,8 +14,139 @@
   }
 }
 
+@media screen and (max-width: 400px) {
+
+  .logo-link {
+    position: absolute;
+    bottom: 5vh;
+    right: 5vw;
+    height: 3vh;
+  }
+
+  .youtube {
+    right: 15vw;
+  }
+
+  .show-container{
+    width: 100vw !important;
+  }
+
+  .show {
+    margin-top: -20px !important;
+  }
+
+  .active {
+    width: auto;
+    height: auto
+  }
+
+  .img-0 {
+    margin-left: -500px;
+  }
+
+  .img-1 {
+    margin-left: -200px;
+  }
+
+  .img-2 {
+    margin-left: -380px;
+  }
+
+  .img-3 {
+    margin-left: -500px;
+  }
+
+  .img-4 {
+    margin-left: -650px;
+    margin-top: -200px;
+  }
+
+  .img-5 {
+    margin-top: -300px;
+    margin-left: -1031px;
+  }
+
+  .img-6 {
+    margin-left: -450px;
+    margin-top: -300px;
+  }
+
+  .img-7 {
+    margin-left: -792px;
+    height: 845px;
+  }
+
+  .img-8 {
+    height: 850px;
+    margin-left: -498px;
+  }
+
+  .img-9 {
+    margin-left: -735px;
+  }
+
+  .img-10 {
+    height: 850px;
+    margin-left: -428px;
+  }
+
+  .img-11 {
+    margin-left: -328px;
+    margin-top: -200px;
+  }
+
+  .img-12 {
+    margin-top: -800px;
+    margin-left: -1164px;
+  }
+
+  .img-13 {
+    margin-top: -900px;
+    margin-left: -2000px;
+  }
+
+  .img-14 {
+    margin-left: -470px;
+  }
+
+  .img-15 {
+    margin-left: -630px;
+  }
+
+
+  .img-16 {
+    margin-top: -300px;
+  }
+
+  .img-17 {
+    height: 1100px;
+    margin-left: -200px;
+  }
+
+  .img-18 {
+    margin-top: -100px;
+    margin-left: -615px;
+  }
+
+  .img-19 {
+    margin-top: -575px;
+    margin-left: -232px;
+  }
+
+  .img-20 {
+    height: 900px;
+    margin-left: -417px;
+  }
+
+  .img-21 {
+    margin-top: -600px;
+    margin-left: -860px;
+  }
+
+}
+
 .App-header {
-  background-color: #282c34;
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +154,43 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden
+}
+
+a {
+  text-decoration: none;
+  background-color: white;
+}
+
+.show-container {
+  height: 50vh;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 50vw;
+  font-size: 16px;
+}
+
+.show {
+  position: absolute;
+}
+
+.not-active {
+  display: none;
+}
+
+@media screen and (min-width: 1000px) {
+  .active {
+    width: 100vw;
+    height: auto
+  }
 }
 
 .App-link {
@@ -32,6 +201,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
