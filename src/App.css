@@ -13,19 +13,39 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.logo-link {
+  position: absolute;
+  bottom: 1vh;
+  z-index: 20000;
+}
+
+.youtube {
+  right: 15vw;
+}
+
+@media screen and (min-width: 400px) {
+  .logo-link{
+    height: 5vh;
+    right: 1vw
+  }
+
+  .youtube{
+    right: 3vw
+  }
+}
 
 @media screen and (max-width: 400px) {
 
   .logo-link {
-    position: absolute;
-    bottom: 5vh;
-    right: 5vw;
+    right: 1vw;
     height: 3vh;
+    z-index: 20000;
   }
 
   .youtube {
-    right: 15vw;
+    right: 5vw;
   }
+
 
   .show-container{
     width: 100vw !important;

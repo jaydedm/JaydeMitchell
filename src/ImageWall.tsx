@@ -1,33 +1,35 @@
 import { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
+import img0 from './pics/img0.jpeg';
+import img1 from './pics/img1.jpeg';
+import img2 from './pics/img2.jpeg';
+import img3 from './pics/img3.jpeg';
+import img4 from './pics/img4.jpeg';
+import img5 from './pics/img5.jpeg';
+import img6 from './pics/img6.jpeg';
+import img7 from './pics/img7.jpeg';
+import img8 from './pics/img8.jpeg';
+import img9 from './pics/img9.jpeg';
+import img10 from './pics/img10.jpeg';
+import img11 from './pics/img11.jpeg';
+import img12 from './pics/img12.jpeg';
+import img13 from './pics/img13.jpeg';
+import img14 from './pics/img14.jpeg';
+import img15 from './pics/img15.jpeg';
+import img16 from './pics/img16.jpeg';
+import img17 from './pics/img17.jpeg';
+import img18 from './pics/img18.jpeg';
+import img19 from './pics/img19.jpeg';
+import img20 from './pics/img20.jpeg';
+import img21 from './pics/img21.jpeg';
+import img22 from './pics/img22.jpeg';
+
 import InstagramLogo from './InstaLogo.png';
 import YouTubeLogo from './YouTubeLogo.png';
 
 function ImageWall(): ReactElement {
-  const imgs: string[] = useMemo(() => [
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/086D9D1A-0CCC-4852-A0C0-3DB086CDB42D.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/176118BE-C75E-4599-9253-FDC883E19843.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/1A9C7EA8-84EE-4AB1-A8F9-CC24C372014C.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/2744AE00-C0EC-488D-BB2E-D16DE40977A8.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/353785006377-R1-011-4.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/353785006377-R1-017-7.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/353785006377-R1-027-12.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/517313A3-3D4F-4A4F-86CF-29023D3941BF.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/86BCF4C8-1385-4B2A-8AD4-D23A17511C27.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/8D423F0F-EE80-4AD7-9B92-05743303EC1B.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/9492F986-7755-4B56-9DDF-90E090529EB3.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/9D4D5C2D-4950-4570-BD03-2464BE8E080A.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/dscf1903.jpeg',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/dscf1910.jpeg',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/F066C449-97FB-4808-9A67-57A10D15F8A5.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/F6954D3D-E235-43B0-AEA5-5755C5FAFF67.JPG',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/IMG7690-R01-025A.jpg',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/IMG7692-R01-003A.jpg',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/IMG7692-R01-007A.jpg',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/IMG7692-R01-023A.jpg',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/IMG7968-R01-000A_1.jpg',
-    'https://s3.us-west-2.amazonaws.com/jaydemitchell.com/NewPictures/IMG7968-R01-010A.jpg',
-  ], []);
+
+  const imgs = useMemo(() => [img0, img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img17, img18, img19, img20, img21, img22], [])
 
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [retrievedImgArray, setRetrievedImgArray] = useState([]);
@@ -71,83 +73,106 @@ function ImageWall(): ReactElement {
   }, [allProgress, imgs])
 
   const imgMap = retrievedImgArray.map((img: any, index) => (
-    <img id={index.toString()} key={img.url} src={img.url} alt='' className={index === activeImage ? `active bg-img img-${index.toString()}` : 'not-active bg-img'}></img>
+    <img id={index.toString()} key={`id-${index}`} src = { img.url } alt = '' className = { index === activeImage ? `active bg-img img-${index.toString()}` : 'not-active bg-img'}></img >
   ));
 
-  const propogateMouseMovement = () => {
-    if (!showShows) {
-      mouseRef.current += 1;
-      if (mouseRef.current % 30 === 0) {
-        setActiveImage((activeImage + 1) % 22)
-      }
+const propogateMouseMovement = () => {
+  if (!showShows) {
+    mouseRef.current += 1;
+    if (mouseRef.current % 10 === 0) {
+      setActiveImage((activeImage + 1) % 22)
     }
   }
+}
 
-  const propogateTouchMovement = () => {
-    if (!showShows) {
-      touchRef.current += 1;
-      if (touchRef.current % 25 === 0) {
-        setActiveImage((activeImage + 1) % 22)
-      }
+const propogateTouchMovement = () => {
+  if (!showShows) {
+    touchRef.current += 1;
+    if (touchRef.current % 20 === 0) {
+      setActiveImage((activeImage + 1) % 22)
     }
   }
+}
 
-  return (
-    <>
-      {loadingProgress === 100 ?
-        <div onMouseMove={propogateMouseMovement} onTouchMove={propogateTouchMovement} style={{height: '100vh', width: '100vw'}}>
-          <p style={{ position: 'absolute', fontSize: 20, marginTop: '2vh', marginLeft: '2vw' }}>JAYDE MITCHELL</p>
-          <p style={{ cursor: 'pointer', position: 'absolute', right: 10, zIndex: '100' }} onClick={() => setShowShows(!showShows)}>Shows</p>
-          <a href='"instagram://user?username={jayde.dm}"' rel="noopener noreferrer" target="_blank"><img src={InstagramLogo} alt='instagram' className='logo-link instagram'></img></a>
-          <a href='https://www.youtube.com/channel/UCoza2e3hlIgzC6_4uH_YE0g' rel="noopener noreferrer" target="_blank"><img src={YouTubeLogo} alt='YouTube' className='logo-link youtube'></img></a>
-          <div style={{ position: 'absolute', width: '100%', lineHeight: '100vw', verticalAlign: 'bottom' }}>
-            A / {activeImage}
-          </div>
-          <div style={{ backgroundColor: 'black', opacity: '50%', display: showShows ? 'block' : 'none', width: '100%', height: '100%', position: 'absolute' }}>
+function getOS() {
+  var userAgent = window.navigator.userAgent,
+    platform = window.navigator.platform,
+    macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+    windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+    iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+    os = null;
 
-            <table className='show-container'>
-              <tr>
-                <th></th>
-                <th></th>
-              </tr>
-              <tr style={{ color: 'black' }}>
-                <td>
-                  <div className='show'>4/14</div>
-                  <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br>Rancho Mirage</a>
-                </td>
-                <td>
-                  <div className='show'>4/15</div>
-                  <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br>Rancho Mirage</a></td>
-              </tr>
-              <tr style={{ color: 'black' }}>
-                <td>
-                  <div className='show'>4/16</div>
-                  <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br> Rancho Mirage</a>
-                </td>
-                <td>
-                  <div className='show'>6/30</div>
-                  <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br> Beverly Hills</a>
-                </td>
-              </tr>
-              <tr style={{ color: 'black' }}>
-                <td>
-                  <div className='show'>7/1</div>
-                  <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br> Beverly Hills</a>
-                </td>
-              </tr>
-            </table>
-          </div>
+  if (macosPlatforms.indexOf(platform) !== -1) {
+    os = 'Mac OS';
+  } else if (iosPlatforms.indexOf(platform) !== -1) {
+    os = 'iOS';
+  } else if (windowsPlatforms.indexOf(platform) !== -1) {
+    os = 'Windows';
+  } else if (/Android/.test(userAgent)) {
+    os = 'Android';
+  } else if (/Linux/.test(platform)) {
+    os = 'Linux';
+  }
 
-          {imgMap}
+  return os;
+}
+
+return (
+  <>
+    {loadingProgress === 100 ?
+      <div onMouseMove={propogateMouseMovement} onTouchMove={propogateTouchMovement} style={{ height: '100vh', width: '100vw' }}>
+        <p style={{ position: 'absolute', fontSize: 20, marginTop: '2vh', marginLeft: '2vw' }}>JAYDE MITCHELL</p>
+        <p style={{ cursor: 'pointer', position: 'absolute', right: 10, zIndex: '100' }} onClick={() => setShowShows(!showShows)}>Shows</p>
+        <a href={getOS() === 'iOS' ? "instagram://user?username={jayde.dm}" : "https://instagram.com/jayde.dm"} rel="noopener noreferrer" target="_blank" className='logo-link instagram'><img src={InstagramLogo} alt='instagram' className='logo-link instagram'></img></a>
+        <a href='https://www.youtube.com/channel/UCoza2e3hlIgzC6_4uH_YE0g' rel="noopener noreferrer" target="_blank" className='logo-link youtube'><img src={YouTubeLogo} alt='YouTube' className='logo-link youtube'></img></a>
+        <div style={{ position: 'absolute', width: '100%', lineHeight: '100vw', verticalAlign: 'bottom' }}>
+          A / {activeImage}
         </div>
-        : (
-          <div>
-            <h1 style={{ margin: 0 }}>JAYDE MITCHELL</h1>
-            <div style={{ textAlign: 'right' }}>{loadingProgress}</div>
-          </div>
-        )}
-    </>
-  )
+        <div style={{ backgroundColor: 'black', opacity: '50%', display: showShows ? 'block' : 'none', width: '100%', height: '100%', position: 'absolute' }}>
+
+          <table className='show-container'>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr style={{ color: 'black' }}>
+              <td>
+                <div className='show'>4/14</div>
+                <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br>Rancho Mirage</a>
+              </td>
+              <td>
+                <div className='show'>4/15</div>
+                <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br>Rancho Mirage</a></td>
+            </tr>
+            <tr style={{ color: 'black' }}>
+              <td>
+                <div className='show'>4/16</div>
+                <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br> Rancho Mirage</a>
+              </td>
+              <td>
+                <div className='show'>6/30</div>
+                <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br> Beverly Hills</a>
+              </td>
+            </tr>
+            <tr style={{ color: 'black' }}>
+              <td>
+                <div className='show'>7/1</div>
+                <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br> Beverly Hills</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        {imgMap}
+      </div>
+      : (
+        <div>
+          <h1 style={{ margin: 0 }}>JAYDE MITCHELL</h1>
+          <div style={{ textAlign: 'right' }}>{loadingProgress}</div>
+        </div>
+      )}
+  </>
+)
 }
 
 export default ImageWall;
