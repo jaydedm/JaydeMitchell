@@ -67,7 +67,7 @@ function ImageWall(): ReactElement {
     setTimeout(() => setLoadingProgress(69), 2000)
     setTimeout(() => setLoadingProgress(83), 2500)
     setTimeout(() => setLoadingProgress(100), 3000)
-  },[])
+  }, [])
 
   return (
     <>
@@ -83,35 +83,52 @@ function ImageWall(): ReactElement {
           <div style={{ backgroundColor: 'black', opacity: '50%', display: showShows ? 'block' : 'none', width: '100%', height: '100%', position: 'absolute' }}>
 
             <table className='show-container'>
-              <tr>
-                <th></th>
-                <th></th>
-              </tr>
-              <tr style={{ color: 'black' }}>
-                <td>
-                  <div className='show'>4/14</div>
-                  <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br>Rancho Mirage</a>
-                </td>
-                <td>
-                  <div className='show'>4/15</div>
-                  <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br>Rancho Mirage</a></td>
-              </tr>
-              <tr style={{ color: 'black' }}>
-                <td>
-                  <div className='show'>4/16</div>
-                  <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br> Rancho Mirage</a>
-                </td>
-                <td>
-                  <div className='show'>6/30</div>
-                  <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br> Beverly Hills</a>
-                </td>
-              </tr>
-              <tr style={{ color: 'black' }}>
-                <td>
-                  <div className='show'>7/1</div>
-                  <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph and the Amazing Technicolor Dreamcoat <br></br> Beverly Hills</a>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr style={{ color: 'black' }}>
+                  <td>
+                    <div className='show'>4/14</div>
+                  </td>
+                  <td>
+                    <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph <br></br>Rancho Mirage</a>
+                  </td>
+                </tr>
+                <tr style={{ color: 'black' }}>
+                  <td>
+                    <div className='show'>4/15</div>
+                  </td>
+                  <td>
+                    <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph <br></br>Rancho Mirage</a>
+                  </td>
+                </tr>
+                <tr style={{ color: 'black' }}>
+                  <td>
+                    <div className='show'>4/16</div>
+                  </td>
+                  <td>
+                    <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph <br></br>Rancho Mirage</a>
+                  </td>
+                </tr>
+                <tr style={{ color: 'black' }}>
+                  <td>
+                    <div className='show'>6/30</div>
+                  </td>
+                  <td>
+                    <a href='https://www.axs.com/events/469394/joseph-the-amazing-technicolor-dreamcoat-tickets?skin=saban'>Joseph <br></br>Beverly Hills</a>
+                  </td>
+                </tr>
+                <tr style={{ color: 'black' }}>
+                  <td>
+                    <div className='show'>7/1</div>
+                  </td>
+                  <td>
+                    <a href='https://www.axs.com/events/469477/joseph-the-amazing-technicolor-dreamcoat-tickets'>Joseph <br></br>Beverly Hills</a>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
 
@@ -122,7 +139,8 @@ function ImageWall(): ReactElement {
             <h1 style={{ margin: 0 }}>JAYDE MITCHELL</h1>
             <div style={{ textAlign: 'right' }}>{loadingProgress}</div>
           </div>
-        )}
+        )
+      }
     </>
   )
 }
