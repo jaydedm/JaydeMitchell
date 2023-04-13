@@ -34,6 +34,25 @@
   }
 }
 
+
+@media screen and (max-width:391px) {
+
+  .img-0 {
+    margin-top: -75px;
+  }
+  .img-1 {
+    margin-top: -75px;
+  }
+  .img-3 {
+    margin-top: -180px;
+  }
+
+  .img-16 {
+    margin-top: -400px !important;
+  }
+}
+
+
 @media screen and (max-width: 440px) {
 
   .logo-link {
@@ -98,7 +117,7 @@
 
   .img-8 {
     height: 850px;
-    margin-left: -295px;
+    margin-left: -398px;
   }
 
   .img-9 {
