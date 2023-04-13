@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 
 import InstagramLogo from './InstaLogo.png';
 import YouTubeLogo from './YouTubeLogo.png';
@@ -61,8 +61,13 @@ function ImageWall(): ReactElement {
   }
 
   useEffect(() => {
+    setTimeout(() => setLoadingProgress(7), 500)
+    setTimeout(() => setLoadingProgress(25), 500)
+    setTimeout(() => setLoadingProgress(37), 1000)
+    setTimeout(() => setLoadingProgress(69), 2000)
+    setTimeout(() => setLoadingProgress(83), 2500)
     setTimeout(() => setLoadingProgress(100), 3000)
-  })
+  },[])
 
   return (
     <>
