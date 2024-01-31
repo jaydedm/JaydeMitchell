@@ -93,7 +93,7 @@ function ImageWall(): ReactElement {
                     <div className='show'>4/14</div>
                   </td>
                   <td>
-                    <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph <br></br>Rancho Mirage</a>
+                    <div>Sold Out <br></br>Rancho Mirage</div>
                   </td>
                 </tr>
                 <tr style={{ color: 'black' }}>
@@ -101,7 +101,7 @@ function ImageWall(): ReactElement {
                     <div className='show'>4/15</div>
                   </td>
                   <td>
-                    <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph <br></br>Rancho Mirage</a>
+                    <div>Sold Out <br></br>Rancho Mirage</div>
                   </td>
                 </tr>
                 <tr style={{ color: 'black' }}>
@@ -109,7 +109,7 @@ function ImageWall(): ReactElement {
                     <div className='show'>4/16</div>
                   </td>
                   <td>
-                    <a href='https://desert-theatricals.ticketleap.com/joseph-and-the-amazing-technicolor-dreamcoat/'>Joseph <br></br>Rancho Mirage</a>
+                    <div>Sold Out<br></br>Rancho Mirage</div>
                   </td>
                 </tr>
                 <tr style={{ color: 'black' }}>
@@ -117,7 +117,7 @@ function ImageWall(): ReactElement {
                     <div className='show'>6/30</div>
                   </td>
                   <td>
-                    <a href='https://www.axs.com/events/469394/joseph-the-amazing-technicolor-dreamcoat-tickets?skin=saban'>Joseph <br></br>Beverly Hills</a>
+                    <div>Sold Out<br></br>Beverly Hills</div>
                   </td>
                 </tr>
                 <tr style={{ color: 'black' }}>
@@ -125,7 +125,7 @@ function ImageWall(): ReactElement {
                     <div className='show'>7/1</div>
                   </td>
                   <td>
-                    <a href='https://www.axs.com/events/469477/joseph-the-amazing-technicolor-dreamcoat-tickets'>Joseph <br></br>Beverly Hills</a>
+                    <div>Sold Out <br></br>Beverly Hills</div>
                   </td>
                 </tr>
               </tbody>
