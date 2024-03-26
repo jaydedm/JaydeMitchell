@@ -62,11 +62,11 @@ function ImageWall(): ReactElement {
 
   useEffect(() => {
     setTimeout(() => setLoadingProgress(7), 500)
-    setTimeout(() => setLoadingProgress(25), 500)
-    setTimeout(() => setLoadingProgress(37), 1000)
-    setTimeout(() => setLoadingProgress(69), 2000)
-    setTimeout(() => setLoadingProgress(83), 2500)
-    setTimeout(() => setLoadingProgress(100), 3000)
+    setTimeout(() => setLoadingProgress(25), 250)
+    setTimeout(() => setLoadingProgress(37), 500)
+    setTimeout(() => setLoadingProgress(69), 1000)
+    setTimeout(() => setLoadingProgress(83), 1250)
+    setTimeout(() => setLoadingProgress(100), 1500)
   }, [])
 
   return (
@@ -83,6 +83,8 @@ function ImageWall(): ReactElement {
           <div style={{ backgroundColor: 'black', opacity: '50%', display: showShows ? 'block' : 'none', width: '100%', height: '100%', position: 'absolute' }}>
 
             <table className='show-container'>
+              <div>close </div>
+
               <tbody>
                 <tr>
                   <th></th>
