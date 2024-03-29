@@ -2,6 +2,7 @@ import { ReactElement, useEffect, useRef, useState } from 'react';
 
 import InstagramLogo from './InstaLogo.png';
 import YouTubeLogo from './YouTubeLogo.png';
+import Shows from './Shows';
 
 function ImageWall(): ReactElement {
 
@@ -77,64 +78,15 @@ function ImageWall(): ReactElement {
           <p style={{ cursor: 'pointer', position: 'absolute', right: 10, zIndex: '100' }} onClick={() => setShowShows(!showShows)}>Shows</p>
           <a href={getOS() === 'iOS' ? "instagram://user?username={jayde.dm}" : "https://instagram.com/jayde.dm"} rel="noopener noreferrer" target="_blank" className='logo-link instagram'><img src={InstagramLogo} alt='instagram' className='logo-link instagram'></img></a>
           <a href='https://www.youtube.com/channel/UCoza2e3hlIgzC6_4uH_YE0g' rel="noopener noreferrer" target="_blank" className='logo-link youtube'><img src={YouTubeLogo} alt='YouTube' className='logo-link youtube'></img></a>
-          <div style={{ position: 'absolute', width: '100%', lineHeight: '100vw', verticalAlign: 'bottom' }}>
+          <div aria-label='label' style={{ position: 'absolute', width: '100%', lineHeight: '100vw', verticalAlign: 'bottom', display: showShows ? 'none' : 'block' }}>
             A / {activeImage}
           </div>
-          <div style={{ backgroundColor: 'black', opacity: '50%', display: showShows ? 'block' : 'none', width: '100%', height: '100%', position: 'absolute' }}>
-
-            <table className='show-container'>
-              <div>close </div>
-
-              <tbody>
-                <tr>
-                  <th></th>
-                  <th></th>
-                </tr>
-                <tr style={{ color: 'black' }}>
-                  <td>
-                    <div className='show'>4/14</div>
-                  </td>
-                  <td>
-                    <div>Sold Out <br></br>Rancho Mirage</div>
-                  </td>
-                </tr>
-                <tr style={{ color: 'black' }}>
-                  <td>
-                    <div className='show'>4/15</div>
-                  </td>
-                  <td>
-                    <div>Sold Out <br></br>Rancho Mirage</div>
-                  </td>
-                </tr>
-                <tr style={{ color: 'black' }}>
-                  <td>
-                    <div className='show'>4/16</div>
-                  </td>
-                  <td>
-                    <div>Sold Out<br></br>Rancho Mirage</div>
-                  </td>
-                </tr>
-                <tr style={{ color: 'black' }}>
-                  <td>
-                    <div className='show'>6/30</div>
-                  </td>
-                  <td>
-                    <div>Sold Out<br></br>Beverly Hills</div>
-                  </td>
-                </tr>
-                <tr style={{ color: 'black' }}>
-                  <td>
-                    <div className='show'>7/1</div>
-                  </td>
-                  <td>
-                    <div>Sold Out <br></br>Beverly Hills</div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div style={{ backgroundColor: 'black', opacity: showShows ? '75%' : '50%', display: showShows ? 'block' : 'none', width: '100%', height: '100%', position: 'absolute' }}>
+            <Shows setShowShows={setShowShows} />
           </div>
-
-          {imgMap}
+          <div aria-label='background'>
+            {imgMap}
+          </div>
         </div>
         : (
           <div>

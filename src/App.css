@@ -66,7 +66,7 @@
   }
 
 
-  .show-container{
+  .show-dialog{
     width: 100vw !important;
   }
 
@@ -195,6 +195,27 @@
   color: white;
 }
 
+.showButton {
+  margin: 10px !important;
+  border: 1px solid black !important;
+  color: black !important;
+}
+
+.showButtonOrch {
+  margin: 10px !important;
+  border: 1px solid red !important;
+  color: black !important;
+}
+
+.showTitle {
+  color: black;
+  margin-bottom: 30px;
+}
+
+.buttonContainer {
+  margin-top: 60px;
+}
+
 body {
   margin: 0;
   height: 100%;
@@ -206,7 +227,7 @@ a {
   background-color: white;
 }
 
-.show-container {
+.show-dialog {
   height: 50vh;
   position: absolute;
   left: 50%;
