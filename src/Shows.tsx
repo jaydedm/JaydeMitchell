@@ -24,9 +24,8 @@ function Shows({ setShowShows }: ShowsProps): ReactElement {
         <Button className='showButton' variant="outlined" href='https://app.arts-people.com/index.php?actions=34&p=138' target='_blank'>6/9 - 2PM</Button>
         <Button className='showButton' variant="outlined" href='https://app.arts-people.com/index.php?actions=38&p=150' target='_blank'>6/15 - 4PM</Button>
         <Button className='showButton' variant="outlined" href='https://app.arts-people.com/index.php?actions=40&p=153' target='_blank'>6/15 - 8PM</Button>
-        <br />
-        <br />
-        <br />
+        <br/>
+        <br/>
         <span style={{ color: 'red' }}>* red with uncompromised orchestra *</span>
       </div>
     </div>
