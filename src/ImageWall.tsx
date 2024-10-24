@@ -75,7 +75,7 @@ function ImageWall(): ReactElement {
       {loadingProgress === 100 ?
         <div onMouseMove={propogateMouseMovement} onTouchMove={propogateTouchMovement} style={{ height: '100vh', width: '100vw' }}>
           <p style={{ position: 'absolute', fontSize: 20, marginTop: '2vh', marginLeft: '2vw' }}>JAYDE MITCHELL</p>
-          <p style={{ cursor: 'pointer', position: 'absolute', right: 10, zIndex: '100' }} onClick={() => setShowShows(!showShows)}>Shows</p>
+          <p style={{ cursor: 'pointer', position: 'absolute', right: 10, zIndex: '100' }} onClick={() => setShowShows(!showShows)}>Bio</p>
           <a href={getOS() === 'iOS' ? "instagram://user?username={jayde.dm}" : "https://instagram.com/jayde.dm"} rel="noopener noreferrer" target="_blank" className='logo-link instagram'><img src={InstagramLogo} alt='instagram' className='logo-link instagram'></img></a>
           <a href='https://www.youtube.com/channel/UCoza2e3hlIgzC6_4uH_YE0g' rel="noopener noreferrer" target="_blank" className='logo-link youtube'><img src={YouTubeLogo} alt='YouTube' className='logo-link youtube'></img></a>
           <div aria-label='label' style={{ position: 'absolute', width: '100%', lineHeight: '100vw', verticalAlign: 'bottom', display: showShows ? 'none' : 'block' }}>

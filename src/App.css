@@ -228,13 +228,14 @@ a {
 }
 
 .show-dialog {
-  height: 60vh;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  font-size: 16px;
+  font-size: 1rem;
+  overflow-y: scroll;
+  height: 50vh;
 }
 
 .show {
