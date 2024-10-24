@@ -23,7 +23,7 @@ function ImageWall(): ReactElement {
   const propogateMouseMovement = () => {
     if (!showShows) {
       mouseRef.current += 1;
-      if (mouseRef.current % 17 === 0) {
+      if (mouseRef.current % 30 === 0) {
         setActiveImage((activeImage + 1) % 22)
       }
     }
@@ -32,7 +32,7 @@ function ImageWall(): ReactElement {
   const propogateTouchMovement = () => {
     if (!showShows) {
       touchRef.current += 1;
-      if (touchRef.current % 12 === 0) {
+      if (touchRef.current % 20 === 0) {
         setActiveImage((activeImage + 1) % 22)
       }
     }
