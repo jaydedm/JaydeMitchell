@@ -101,22 +101,22 @@
   }
 
   .img-5 {
-    margin-top: -300px;
+    margin-top: -265px;
     margin-left: -1031px;
   }
 
   .img-6 {
     margin-left: -450px;
-    margin-top: -300px;
+    margin-top: -270px;
   }
 
   .img-7 {
-    margin-left: -792px;
-    height: 845px;
+    margin-left: -860px;
+    height: 935px;
   }
 
   .img-8 {
-    height: 850px;
+    height: 935px;
     margin-left: -398px;
   }
 
@@ -125,7 +125,7 @@
   }
 
   .img-10 {
-    height: 850px;
+    height: 935px;
     margin-left: -428px;
   }
 
@@ -173,7 +173,7 @@
   }
 
   .img-20 {
-    height: 900px;
+    height: 935px;
     margin-left: -417px;
   }
 
@@ -232,7 +232,7 @@ a {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: black;
   font-size: 1rem;
   overflow-y: scroll;
   height: 50vh;

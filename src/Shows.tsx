@@ -6,61 +6,78 @@ interface ShowsProps {
 
 function Shows({ setShowShows }: ShowsProps): ReactElement {
   return (
-    <div className='show-dialog'>
+    <div
+      className='show-dialog'
+      style={{
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center' /* Centers the entire block vertically */,
+        alignItems: 'center' /* Centers everything horizontally */,
+        height: '100%',
+        padding:
+          '2rem' /* Safe padding so it never touches the screen edges on mobile */,
+        boxSizing: 'border-box'
+      }}
+    >
       <div
         style={{
-          color: 'black',
-          position: 'absolute',
-          right: '0',
-          padding: '5px',
-          cursor: 'pointer'
+          color: 'white',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          maxWidth: '650px',
+          margin: '0 auto',
+          gap: '1.5rem' /* Handles spacing between paragraphs */,
+          fontFamily: '"forma-djr-text", sans-serif',
+          textTransform: 'uppercase',
+          letterSpacing: '1px',
+          fontWeight: 400,
+          fontSize: '0.9rem',
+          lineHeight: 1.8
         }}
-        onClick={() => setShowShows(false)}
       >
-        close
-      </div>
-      <div style={{ color: 'black', padding: '3rem' }}>
-        Jayde Mitchell grew up in the American Southwest, where he produced his
-        high school’s first Broadway musical in the cafeteria and led a campaign
-        with friends and mentors that resulted in the region’s first performing
-        arts center being built.
-        <br></br>
-        <br></br>
-        Some favorite moments since then: 1st Place (National Opera Association
-        - Pirates of Penzance), Tenor Resident Young Artist (Ohio Light Opera),{' '}
-        <em>Jeremy Heere</em> (<strong>BE MORE CHILL</strong>),{' '}
-        <em>Monty Navarro</em>{' '}
-        <strong>(A GENTLEMAN'S GUIDE TO LOVE AND MURDER)</strong>,{' '}
-        <em>Sky Masterson</em> <strong>(GUYS & DOLLS)</strong>, <em>Joseph</em>{' '}
-        <strong>(JOSEPH AND THE AMAZING TECHNICOLOR DREAMCOAT)</strong>,{' '}
-        <em>Lysander</em> <strong>(A MIDSUMMER NIGHT'S DREAM)</strong> with
-        Shakespeare's Globe, performances around the world including Carnegie
-        Hall, and guest artist for the 2018 St. Louis Literary Award
-        presentation to Stephen Sondheim.
-        <br></br>
-        <br></br>
-        He is an alumni of Berklee College of Music, University of Missouri -
-        St. Louis, and MIT.
-        <br></br>
-        <br></br>
-        He has made contributions in the Software Architecture & Engineering
-        space, building household-name products with some of the biggest
-        companies in the world. He is a volunteer researcher at{' '}
-        <a href='https://www.kwaai.ai/home' target='_blank' rel='noreferrer'>
-          Kwaai AI Lab.
-        </a>
-        <br></br>
-        <br></br>
-        He most recently appeared as <em>Jamie Wellerstein</em> in{' '}
-        <strong>THE LAST FIVE YEARS</strong> with the GRAMMY-award winning
-        production team at Sierra Madre Playhouse to launch their Centennial
-        Season in 2024.
-        <br></br>
-        <br></br>
-        He lives in Los Angeles pursuing his most important work: the arts and
-        empowering people with equal access to education, tools, and technology.
+        <p style={{ margin: 0 }}>
+          Raised in the American Southwest, Jayde catalyzed the movement to
+          build the region’s first performing arts center. His artistic work
+          spans the boards of Shakespeare’s Globe, the stage of Carnegie Hall,
+          and the Sheldon Concert Hall, where he was a featured artist for
+          Stephen Sondheim’s 2018 St. Louis Literary Award presentation.
+        </p>
+        <p style={{ margin: 0 }}>
+          As a technologist and alumnus of MIT, Berklee, and UMSL, he has
+          architected household-name software and driven award-winning research
+          with Kwaii AI Lab at SCALE 22x.
+        </p>
+        <p style={{ margin: 0 }}>
+          Now based in Los Angeles, his focus remains resolute: empowering
+          others to explore and express themselves through equal access to the
+          arts, education, and technology.
+        </p>
+
+        {/* Centered Pill Button */}
+        <div
+          style={{
+            marginTop:
+              '1.5rem' /* Adds a little extra breathing room above the button */,
+            padding: '8px 24px',
+            border: '1px solid white',
+            borderRadius: '50px',
+            cursor: 'pointer',
+            fontFamily: '"forma-djr-text", sans-serif',
+            textTransform: 'uppercase',
+            fontSize: '0.75rem',
+            letterSpacing: '2px',
+            fontWeight: 600
+          }}
+          onClick={() => setShowShows(false)}
+        >
+          close
+        </div>
       </div>
     </div>
   )
 }
+
 export default Shows
