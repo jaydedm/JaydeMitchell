@@ -3,16 +3,6 @@
   overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 .logo-link {
   position: absolute;
   bottom: 1vh;
@@ -24,37 +14,17 @@
 }
 
 @media screen and (min-width: 400px) {
-  .logo-link{
+  .logo-link {
     height: 5vh;
-    right: 1vw
+    right: 1vw;
   }
 
-  .youtube{
-    right: 3vw
-  }
-}
-
-
-@media screen and (max-width:391px) {
-
-  .img-0 {
-    margin-top: -75px;
-  }
-  .img-1 {
-    margin-top: -75px;
-  }
-  .img-3 {
-    margin-top: -180px;
-  }
-
-  .img-16 {
-    margin-top: -400px !important;
+  .youtube {
+    right: 3vw;
   }
 }
-
 
 @media screen and (max-width: 440px) {
-
   .logo-link {
     right: 1vw;
     height: 3vh;
@@ -65,123 +35,80 @@
     right: 5vw;
   }
 
-
-  .show-dialog{
+  .show-dialog {
     width: 100vw !important;
   }
 
-  .show {
-    margin-top: -20px !important;
-  }
-
   .active {
+    height: 100vh;
     width: auto;
-    height: auto
   }
 
+  /* Per-image subject centering — adjust margin-left to taste */
+  /* Remapped for shuffled order: [2,20,5,6,1,3,4,8,7,9,19,10,11,12,0,13,14,15,18,16,17] */
   .img-0 {
-    margin-left: -500px;
+    margin-left: -300px;
   }
-
   .img-1 {
-    margin-left: -200px;
+    margin-left: -55px;
   }
-
   .img-2 {
-    margin-left: -380px;
+    margin-left: -350px;
   }
-
   .img-3 {
+    margin-left: -850px;
+  }
+  .img-4 {
+    margin-left: -150px;
+  }
+  .img-5 {
     margin-left: -500px;
   }
-
-  .img-4 {
-    margin-left: -650px;
-    margin-top: -200px;
-  }
-
-  .img-5 {
-    margin-top: -265px;
-    margin-left: -1031px;
-  }
-
   .img-6 {
-    margin-left: -450px;
-    margin-top: -270px;
+    margin-left: -425px;
   }
-
   .img-7 {
-    margin-left: -860px;
-    height: 935px;
+    margin-left: -450px;
   }
-
   .img-8 {
-    height: 935px;
-    margin-left: -398px;
+    margin-left: -425px;
   }
-
   .img-9 {
-    margin-left: -735px;
+    margin-left: -175px;
   }
-
   .img-10 {
-    height: 935px;
-    margin-left: -428px;
+    margin-left: -115px;
   }
-
   .img-11 {
-    margin-left: -328px;
-    margin-top: -200px;
+    margin-left: -725px;
   }
-
   .img-12 {
-    margin-top: -800px;
-    margin-left: -1164px;
+    margin-left: -425px;
   }
-
   .img-13 {
-    margin-top: -900px;
-    margin-left: -2000px;
+    margin-left: -600px;
   }
-
   .img-14 {
-    margin-left: -470px;
+    margin-left: -450px;
   }
-
   .img-15 {
-    margin-left: -630px;
+    margin-left: -575px;
   }
-
-
   .img-16 {
-    margin-top: -300px;
+    margin-left: -125px;
   }
-
   .img-17 {
-    height: 1100px;
-    margin-left: -200px;
+    margin-left: -100px;
   }
-
   .img-18 {
-    margin-top: -100px;
-    margin-left: -615px;
+    margin-left: -235px;
   }
-
   .img-19 {
-    margin-top: -575px;
-    margin-left: -232px;
+    margin-left: -375px;
   }
-
   .img-20 {
-    height: 935px;
-    margin-left: -417px;
+    margin-left: -150px;
   }
-
-  .img-21 {
-    margin-top: -600px;
-    margin-left: -860px;
-  }
-
 }
 
 .App-header {
@@ -195,31 +122,10 @@
   color: white;
 }
 
-.showButton {
-  margin: 10px !important;
-  border: 1px solid black !important;
-  color: black !important;
-}
-
-.showButtonOrch {
-  margin: 10px !important;
-  border: 1px solid red !important;
-  color: black !important;
-}
-
-.showTitle {
-  color: black;
-  margin-bottom: 30px;
-}
-
-.buttonContainer {
-  margin-top: 60px;
-}
-
 body {
   margin: 0;
   height: 100%;
-  overflow: hidden
+  overflow: hidden;
 }
 
 a {
@@ -238,10 +144,6 @@ a {
   height: 50vh;
 }
 
-.show {
-  position: absolute;
-}
-
 .not-active {
   display: none;
 }
@@ -249,20 +151,6 @@ a {
 @media screen and (min-width: 1000px) {
   .active {
     width: 100vw;
-    height: auto
-  }
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
+    height: auto;
   }
 }

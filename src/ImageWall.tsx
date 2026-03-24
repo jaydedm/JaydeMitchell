@@ -1,77 +1,51 @@
-import { ReactElement, useEffect, useRef, useState } from 'react'
+import { ReactElement, useCallback, useEffect, useRef, useState } from 'react'
 
 import InstagramLogo from './InstaLogo.png'
 import YouTubeLogo from './YouTubeLogo.png'
 import Shows from './Shows'
 
+const IMG_COUNT = 21
+const DEFAULT_IMAGE = 18
+
+// Shuffled order: img0/1/18/19/20 spread out, img18 stays at index 18
+const IMAGE_ORDER = [2, 20, 5, 6, 1, 3, 4, 8, 7, 9, 19, 10, 11, 12, 0, 13, 14, 15, 18, 16, 17]
+
+function imgUrl(i: number): string {
+  return process.env.PUBLIC_URL + `/pics/img${IMAGE_ORDER[i]}.webp`
+}
+
+function isMobileApple(): boolean {
+  return /iPhone|iPad|iPod/.test(navigator.userAgent)
+}
+
 function ImageWall(): ReactElement {
   const [loadingProgress, setLoadingProgress] = useState(0)
-  const [activeImage, setActiveImage] = useState(7)
+  const [loaded, setLoaded] = useState<Set<number>>(() => new Set())
+  const [activeImage, setActiveImage] = useState(DEFAULT_IMAGE)
   const [showShows, setShowShows] = useState(false)
 
   const mouseRef = useRef(0)
   const touchRef = useRef(0)
+  const activeRef = useRef(activeImage)
+  activeRef.current = activeImage
 
-  let imgMap = []
+  const advance = useCallback(() => {
+    setActiveImage((activeRef.current + 1) % IMG_COUNT)
+  }, [])
 
-  for (let i = 0; i <= 22; i++) {
-    const img = (
-      <img
-        id={i.toString()}
-        key={`id-${i}`}
-        src={process.env.PUBLIC_URL + `/pics/img${i}.jpeg`}
-        alt=''
-        className={
-          i === activeImage
-            ? `active bg-img img-${i.toString()}`
-            : 'not-active bg-img'
-        }
-      ></img>
-    )
-    imgMap.push(img)
-  }
+  const propogateMouseMovement = useCallback(() => {
+    if (showShows) return
+    mouseRef.current += 1
+    if (mouseRef.current % 30 === 0) advance()
+  }, [showShows, advance])
 
-  const propogateMouseMovement = () => {
-    if (!showShows) {
-      mouseRef.current += 1
-      if (mouseRef.current % 30 === 0) {
-        setActiveImage((activeImage + 1) % 22)
-      }
-    }
-  }
+  const propogateTouchMovement = useCallback(() => {
+    if (showShows) return
+    touchRef.current += 1
+    if (touchRef.current % 20 === 0) advance()
+  }, [showShows, advance])
 
-  const propogateTouchMovement = () => {
-    if (!showShows) {
-      touchRef.current += 1
-      if (touchRef.current % 20 === 0) {
-        setActiveImage((activeImage + 1) % 22)
-      }
-    }
-  }
-
-  function getOS() {
-    var userAgent = window.navigator.userAgent,
-      platform = window.navigator.platform,
-      macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
-      windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
-      iosPlatforms = ['iPhone', 'iPad', 'iPod'],
-      os = null
-
-    if (macosPlatforms.indexOf(platform) !== -1) {
-      os = 'Mac OS'
-    } else if (iosPlatforms.indexOf(platform) !== -1) {
-      os = 'iOS'
-    } else if (windowsPlatforms.indexOf(platform) !== -1) {
-      os = 'Windows'
-    } else if (/Android/.test(userAgent)) {
-      os = 'Android'
-    } else if (/Linux/.test(platform)) {
-      os = 'Linux'
-    }
-
-    return os
-  }
-
+  // Fake loading bar for the vibe
   useEffect(() => {
     setTimeout(() => setLoadingProgress(7), 500)
     setTimeout(() => setLoadingProgress(25), 250)
@@ -80,6 +54,48 @@ function ImageWall(): ReactElement {
     setTimeout(() => setLoadingProgress(83), 1250)
     setTimeout(() => setLoadingProgress(100), 1500)
   }, [])
+
+  // Load hero image eagerly, then background-preload the rest one at a time
+  useEffect(() => {
+    const hero = new Image()
+    hero.src = imgUrl(DEFAULT_IMAGE)
+    hero.onload = () => {
+      setLoaded(new Set([DEFAULT_IMAGE]))
+
+      const remaining = Array.from({ length: IMG_COUNT }, (_, i) => i).filter(i => i !== DEFAULT_IMAGE)
+      let idx = 0
+      const loadNext = () => {
+        if (idx >= remaining.length) return
+        const img = new Image()
+        const i = remaining[idx++]
+        img.src = imgUrl(i)
+        img.onload = img.onerror = () => {
+          setLoaded(prev => new Set(prev).add(i))
+          window.requestIdleCallback ? window.requestIdleCallback(loadNext) : setTimeout(loadNext, 50)
+        }
+      }
+      window.requestIdleCallback ? window.requestIdleCallback(loadNext) : setTimeout(loadNext, 50)
+    }
+  }, [])
+
+  const imgMap = []
+  for (let i = 0; i < IMG_COUNT; i++) {
+    if (!loaded.has(i)) continue
+    imgMap.push(
+      <img
+        id={i.toString()}
+        key={`id-${i}`}
+        src={imgUrl(i)}
+        alt=''
+        decoding='async'
+        className={
+          i === activeImage
+            ? `active bg-img img-${i}`
+            : 'not-active bg-img'
+        }
+      />
+    )
+  }
 
   return (
     <>
@@ -107,14 +123,14 @@ function ImageWall(): ReactElement {
                 right: 10,
                 zIndex: '100'
               }}
-              onClick={() => setShowShows(!showShows)}
+              onClick={() => setShowShows(true)}
             >
               Bio
             </p>
           )}
           <a
             href={
-              getOS() === 'iOS'
+              isMobileApple()
                 ? 'instagram://user?username={jayde.dm}'
                 : 'https://instagram.com/jayde.dm'
             }
@@ -126,7 +142,7 @@ function ImageWall(): ReactElement {
               src={InstagramLogo}
               alt='instagram'
               className='logo-link instagram'
-            ></img>
+            />
           </a>
           <a
             href='https://www.youtube.com/channel/UCoza2e3hlIgzC6_4uH_YE0g'
@@ -138,7 +154,7 @@ function ImageWall(): ReactElement {
               src={YouTubeLogo}
               alt='YouTube'
               className='logo-link youtube'
-            ></img>
+            />
           </a>
           <div
             aria-label='label'
