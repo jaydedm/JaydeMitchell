@@ -4,15 +4,21 @@ import InstagramLogo from './InstaLogo.png'
 import YouTubeLogo from './YouTubeLogo.png'
 import Shows from './Shows'
 
-const IMG_COUNT = 21
-const DEFAULT_IMAGE = 18
+const LANDSCAPE_ORDER = [2, 5, 6, 1, 3, 4, 8, 7, 9, 10, 11, 12, 0, 13, 18, 16]
+const PORTRAIT_GROUPS = [
+  [14, 15, 17],
+  [19, 14, 20],
+]
 
-// Shuffled order: img0/1/18/19/20 spread out, img18 stays at index 18
-const IMAGE_ORDER = [2, 20, 5, 6, 1, 3, 4, 8, 7, 9, 19, 10, 11, 12, 0, 13, 14, 15, 18, 16, 17]
+// Total slots: landscapes + portrait groups
+const SLOT_COUNT = LANDSCAPE_ORDER.length + PORTRAIT_GROUPS.length
+const DEFAULT_SLOT = LANDSCAPE_ORDER.length // first portrait group
 
-function imgUrl(i: number): string {
-  return process.env.PUBLIC_URL + `/pics/img${IMAGE_ORDER[i]}.webp`
+function imgUrlByNum(n: number): string {
+  return process.env.PUBLIC_URL + `/pics/img${n}.webp`
 }
+
+const ALL_IMAGE_NUMS = Array.from(new Set([...LANDSCAPE_ORDER, ...PORTRAIT_GROUPS.flat()]))
 
 function isMobileApple(): boolean {
   return /iPhone|iPad|iPod/.test(navigator.userAgent)
@@ -21,16 +27,16 @@ function isMobileApple(): boolean {
 function ImageWall(): ReactElement {
   const [loadingProgress, setLoadingProgress] = useState(0)
   const [loaded, setLoaded] = useState<Set<number>>(() => new Set())
-  const [activeImage, setActiveImage] = useState(DEFAULT_IMAGE)
+  const [activeSlot, setActiveSlot] = useState(DEFAULT_SLOT)
   const [showShows, setShowShows] = useState(false)
 
   const mouseRef = useRef(0)
   const touchRef = useRef(0)
-  const activeRef = useRef(activeImage)
-  activeRef.current = activeImage
+  const activeRef = useRef(activeSlot)
+  activeRef.current = activeSlot
 
   const advance = useCallback(() => {
-    setActiveImage((activeRef.current + 1) % IMG_COUNT)
+    setActiveSlot((activeRef.current + 1) % SLOT_COUNT)
   }, [])
 
   const propogateMouseMovement = useCallback(() => {
@@ -55,46 +61,48 @@ function ImageWall(): ReactElement {
     setTimeout(() => setLoadingProgress(100), 1500)
   }, [])
 
-  // Load hero image eagerly, then background-preload the rest one at a time
   useEffect(() => {
-    const hero = new Image()
-    hero.src = imgUrl(DEFAULT_IMAGE)
-    hero.onload = () => {
-      setLoaded(new Set([DEFAULT_IMAGE]))
-
-      const remaining = Array.from({ length: IMG_COUNT }, (_, i) => i).filter(i => i !== DEFAULT_IMAGE)
-      let idx = 0
-      const loadNext = () => {
-        if (idx >= remaining.length) return
-        const img = new Image()
-        const i = remaining[idx++]
-        img.src = imgUrl(i)
-        img.onload = img.onerror = () => {
-          setLoaded(prev => new Set(prev).add(i))
-          window.requestIdleCallback ? window.requestIdleCallback(loadNext) : setTimeout(loadNext, 50)
-        }
+    let idx = 0
+    const loadNext = () => {
+      if (idx >= ALL_IMAGE_NUMS.length) return
+      const img = new Image()
+      const n = ALL_IMAGE_NUMS[idx++]
+      img.src = imgUrlByNum(n)
+      img.onload = img.onerror = () => {
+        setLoaded(prev => new Set(prev).add(n))
+        window.requestIdleCallback ? window.requestIdleCallback(loadNext) : setTimeout(loadNext, 50)
       }
-      window.requestIdleCallback ? window.requestIdleCallback(loadNext) : setTimeout(loadNext, 50)
     }
+    loadNext()
   }, [])
 
+  const isPortraitSlot = activeSlot >= LANDSCAPE_ORDER.length
+  const portraitGroupIndex = activeSlot - LANDSCAPE_ORDER.length
+
   const imgMap = []
-  for (let i = 0; i < IMG_COUNT; i++) {
-    if (!loaded.has(i)) continue
+  if (isPortraitSlot) {
+    const group = PORTRAIT_GROUPS[portraitGroupIndex]
     imgMap.push(
-      <img
-        id={i.toString()}
-        key={`id-${i}`}
-        src={imgUrl(i)}
-        alt=''
-        decoding='async'
-        className={
-          i === activeImage
-            ? `active bg-img img-${i}`
-            : 'not-active bg-img'
-        }
-      />
+      <div key='portrait-group' className='active portrait-group'>
+        {group.map(n => (
+          <img key={`pg-${n}`} src={imgUrlByNum(n)} alt='' decoding='async' className='portrait-img' />
+        ))}
+      </div>
     )
+  } else {
+    for (let i = 0; i < LANDSCAPE_ORDER.length; i++) {
+      if (!loaded.has(LANDSCAPE_ORDER[i])) continue
+      imgMap.push(
+        <img
+          id={i.toString()}
+          key={`id-${i}`}
+          src={imgUrlByNum(LANDSCAPE_ORDER[i])}
+          alt=''
+          decoding='async'
+          className={i === activeSlot ? `active bg-img img-${i}` : 'not-active bg-img'}
+        />
+      )
+    }
   }
 
   return (
@@ -166,7 +174,7 @@ function ImageWall(): ReactElement {
               display: showShows ? 'none' : 'block'
             }}
           >
-            A / {activeImage}
+            A / {activeSlot}
           </div>
           <div
             style={{

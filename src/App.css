@@ -153,4 +153,17 @@ a {
     width: 100vw;
     height: auto;
   }
+
+  .active.portrait-group {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    gap: 0;
+  }
+
+  .portrait-img {
+    width: calc(100vw / 3);
+    height: 100vh;
+    object-fit: cover;
+  }
 }
