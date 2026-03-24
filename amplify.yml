@@ -9,7 +9,7 @@ frontend:
     build:
       commands:
         - yarn build
-        - ls -la build/pics || echo "pics folder missing"
+        - ls build/pics
   artifacts:
     baseDirectory: build
     files:
