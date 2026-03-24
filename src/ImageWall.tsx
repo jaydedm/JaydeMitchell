@@ -12,7 +12,7 @@ const PORTRAIT_GROUPS = [
 
 // Total slots: landscapes + portrait groups
 const SLOT_COUNT = LANDSCAPE_ORDER.length + PORTRAIT_GROUPS.length
-const DEFAULT_SLOT = LANDSCAPE_ORDER.length // first portrait group
+const DEFAULT_SLOT = 14 // img18
 
 function imgUrlByNum(n: number): string {
   return process.env.PUBLIC_URL + `/pics/img${n}.webp`
