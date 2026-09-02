@@ -39,11 +39,9 @@ function Shows({ setShowShows }: ShowsProps): ReactElement {
         }}
       >
         <p style={{ margin: 0 }}>
-          As a teen raised in the American Southwest, Jayde catalyzed the
-          region’s first performing arts center. He's been featured with Actors
-          From The London Stage, at Carnegie Hall, and at the Sheldon Concert
-          Hall for Stephen Sondheim’s 2018 St. Louis Literary Award
-          presentation.
+          As an artist, he has been featured with Actors From The London Stage,
+          at Carnegie Hall, and at the Sheldon Concert Hall for Stephen
+          Sondheim’s 2018 St. Louis Literary Award presentation.
         </p>
         <p style={{ margin: 0 }}>
           As a technologist and alumnus of MIT, Berklee, and UMSL, he has
